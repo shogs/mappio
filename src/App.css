@@ -24,6 +24,14 @@
   color: white;
 }
 
+.winblow > div > div {
+  padding-left: 0 !important;
+}
+
+.menubar-btn {
+  -webkit-app-region: no-drag;
+}
+
 .App-link {
   color: #61dafb;
 }
