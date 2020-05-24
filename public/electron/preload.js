@@ -11,6 +11,9 @@ const {
   isWindowMaximized,
   closeWindow
 } = require("./menu-functions");
+const {
+  setContent
+} = require("./content-functions");
 
 window.addEventListener("DOMContentLoaded", () => {
   window.getCurrentWindow = getCurrentWindow;
@@ -21,4 +24,5 @@ window.addEventListener("DOMContentLoaded", () => {
   window.maxUnmaxWindow = maxUnmaxWindow;
   window.isWindowMaximized = isWindowMaximized;
   window.closeWindow = closeWindow;
+  window.setContent = setContent;
 });

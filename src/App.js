@@ -3,11 +3,16 @@ import './App.css';
 import {
   Window,
   TitleBar,
-  Text,
+  //Text,
   Button,
   NavPane,
   NavPaneItem
 } from 'react-desktop/windows';
+//const { remote } = require("electron");
+
+// function getCurrentWindow() {
+//   return remote.getCurrentWindow();
+// }
 
 class App extends Component {
   static defaultProps = {
@@ -63,15 +68,15 @@ class App extends Component {
             canPaneToggle={true}
             color={this.props.color}
             theme={this.props.theme}>
-            {this.renderItem('Item 1', (<iframe id="foo" width="100%" height="100%" src="https://www.github.com/" title="Test"></iframe>))}
-            {this.renderItem('Item 2', 'Content 2')}
-            {this.renderItem('Item 3', 'Content 3')}
+            {this.renderItem('Item 1', 'https://github.com')}
+            {this.renderItem('Item 2', 'https://electronjs.org')}
+            {this.renderItem('Item 3', 'http://localhost:3000')}
           </NavPane>
       </Window>
     );
   }
 
-  renderItem(title, content) {
+  renderItem(title, contentUrl) {
     return (
       <NavPaneItem
         title={title}
@@ -80,10 +85,13 @@ class App extends Component {
         theme={this.props.theme}
         background="#ffffff"
         selected={this.state.selected === title}
-        onSelect={() => this.setState({ selected: title })}
+        onSelect={() => {
+          this.setState({ selected: title });
+          window.setContent(contentUrl);
+        }}
         padding="10px 20px"
         push>
-        <Text>{content}</Text>
+        {/* <Text>{content}</Text> */}
       </NavPaneItem>
     );
   }

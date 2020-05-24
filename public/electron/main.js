@@ -4,6 +4,8 @@ const isDev = require('electron-is-dev');
 const { menu } = require("./menu");
 
 let mainWindow;
+let contentView;
+
 
 const isWindows = process.platform === "win32";
 
@@ -25,15 +27,15 @@ function createWindow() {
 
   let windowSize = mainWindow.getSize();
 
-  let view = new BrowserView()
-  mainWindow.setBrowserView(view)
-  view.setBounds({ x: 48, y: 32, width: windowSize[0]-48, height: windowSize[1]-32 })
-  view.webContents.loadURL('https://electronjs.org')
+  contentView = new BrowserView()
+  mainWindow.setBrowserView(contentView)
+  contentView.setBounds({ x: 48, y: 32, width: windowSize[0]-48, height: windowSize[1]-32 })
+  //view.webContents.loadURL('https://electronjs.org')
 
   mainWindow.on('closed', () => mainWindow = null);
 
   mainWindow.on('will-resize', (e, newBounds) => {
-    view.setBounds({ x: 48, y: 32, width: newBounds.width-48, height: newBounds.height-32 });
+    contentView.setBounds({ x: 48, y: 32, width: newBounds.width-48, height: newBounds.height-32 });
   });
 }
 
