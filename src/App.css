@@ -24,6 +24,11 @@
   color: white;
 }
 
+.winblow {
+  border-left: 0;
+  border-style: none !important
+}
+
 .winblow > div > div {
   padding-left: 0 !important;
 }
